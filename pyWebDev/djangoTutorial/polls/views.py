@@ -1,9 +1,5 @@
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
 
-
-def index(request):
+# defines a fn `index` which returns the following HttpResponse
+def index(request: HttpRequest) -> HttpResponse:
     return HttpResponse("Hello, World. You're at the polls index.")
-
-
-def hello_world(str: str) -> str:
-    return str
