@@ -80,6 +80,8 @@
 
 # A type / subtype relationship between classes
 
+from typing import Dict, Union
+
 
 class Computer:
     def __init__(self, serial_number: str, size: str) -> None:
@@ -97,7 +99,12 @@ class Computer:
 
 
 class Server(Computer):
-    def __init__(self, serial_number: str, size: str, spec: dict[str, str]) -> None:
+    def __init__(
+        self,
+        serial_number: str,
+        size: str,
+        spec: Dict[str, Union[str, int, Dict[str, Union[str, int]]]],
+    ) -> None:
         super().__init__(
             serial_number, size
         )  # only pass the extra arguments expected by parent class, never `self`
@@ -110,4 +117,13 @@ pod = Server(
     "INEVI1120234",
     "2U",
     {"GPU": "NVIDIA A1000 8G GPU", "CPU": "AMD THREADRIPPER PRO 9955WX"},
+)
+
+pod = Server(
+    "INEVI02123-123",
+    "1U",
+    {
+        "GPU": {"model": "NVIDIA A1000 8G GPU", "quantity": 2},
+        "CPU": {"model": "AMD Threadripper PRO 9975WX", "quantity": 1},
+    },
 )
