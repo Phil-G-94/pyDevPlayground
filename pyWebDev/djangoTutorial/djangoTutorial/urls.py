@@ -14,10 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import  include,path
+from django.urls import include, path
+from polls.views import HomeView
 
 urlpatterns = [
-    path("polls/", include("polls.urls")), # configure root URLconf to include the URLconf defined in polls.urls (polls/urls.py)
-    path('admin/', admin.site.urls),
+    path("", HomeView.as_view(), name="home"),
+    path(
+        "polls/", include("polls.urls")
+    ),  # configure root URLconf to include the URLconf defined in polls.urls (polls/urls.py)
+    path("admin/", admin.site.urls),
 ]
