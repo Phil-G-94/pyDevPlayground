@@ -1,5 +1,6 @@
 # A program which creates a backup of all my important files
 
+import dotenv
 from dotenv import load_dotenv
 import os
 import time

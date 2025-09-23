@@ -90,7 +90,7 @@ def is_alphanumeric(text: str) -> bool:
     return text.isalnum()
 
 
-def store_serials() -> Optional[List[str | None]]:
+def store_serials() -> Optional[List[str | None]] | str:
     input_text: str | None = None
 
     stored_serials: List[str | None]
@@ -155,7 +155,7 @@ def store_serials() -> Optional[List[str | None]]:
             dump(stored_serials, f)
         return stored_serials
     finally:
-        print("Execution finished.")
+        return "Execution finished."
 
 
 store = store_serials()
